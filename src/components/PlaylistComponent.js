@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import axios from 'axios'
 import PlaylistContext from '../providers/playlistContext';
 import '../scss/components/playlist.scss';
+import { Link } from "gatsby"
 
 
 export const PlaylistComponent = ()=> {
@@ -20,7 +21,9 @@ export const PlaylistComponent = ()=> {
 
     return <div className="playlist">
         {playlist.map( item =>
-            <div key={item.id}>{item.name}</div>
+            <div key={item.id}>
+                <Link to={`/playlist-${item.id}`}>{item.name}</Link>
+            </div>
         )}
     </div>
 }
