@@ -1,18 +1,26 @@
 import React, { useContext, useEffect } from "react";
+import axios from 'axios'
 import PlaylistContext from '../providers/playlistContext';
+import '../scss/components/playlist.scss';
+
 
 export const PlaylistComponent = ()=> {
     const [ playlist, setPlaylist ] = useContext(PlaylistContext);
 
     useEffect(()=>{
-        fetch('http://localhost:3000/playlists')
-            .then(resp => {
-                resp.json()
-            })
-            .then(data => { setPlaylist(data) })
-    }, [playlist]);
+        
+        const fetchData = async () => {
+            const {data} = await axios.get('http://localhost:3000/playlists')
+            setPlaylist(data)
+        };
+      
+        fetchData();
 
-    console.log(playlist)
+    }, []); 
 
-    return <div className="playlist">{playlist}</div>
+    return <div className="playlist">
+        {playlist.map( item =>
+            <div key={item.id}>{item.name}</div>
+        )}
+    </div>
 }
