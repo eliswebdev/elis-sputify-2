@@ -1,0 +1,15 @@
+@use '../color.scss';
+
+.card-list{
+    display: flex;
+    margin-top: 10px;
+}
+
+.card {
+    background-color: color.$primary;
+    margin-right: 10px;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    padding: 20px;
+}

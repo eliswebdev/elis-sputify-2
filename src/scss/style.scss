@@ -1,1 +1,37 @@
 @use 'reset';
+@use 'color.scss';
+
+body{
+    color: color.$white;
+    font-family: 'Arial';
+}
+
+.container {
+    background-color: color.$primary;
+    padding: 3px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 25% 25% 25% 25%; 
+    grid-template-areas: 
+      "sidebar main main main"
+      "sidebar main main main"
+      "sidebar main main main"
+      "footer footer footer footer";
+}  
+
+.block {
+    background-color: color.$secondary;
+    margin: 6px;
+    padding: 10px;
+    border-radius: 10px;
+    &.sidebar {
+        grid-area: sidebar;
+    }
+    &.main {
+        grid-area: main;
+    }
+    &.footer {
+        grid-area: footer;
+    }
+}

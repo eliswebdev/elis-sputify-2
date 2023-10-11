@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import axios from 'axios'
 import PlaylistContext from '../providers/playlistContext';
 import '../scss/components/playlist.scss';
+import { CardComponent } from "./CardComponent";
 
 
 export const PlaylistComponent = ()=> {
@@ -19,8 +20,11 @@ export const PlaylistComponent = ()=> {
     }, []); 
 
     return <div className="playlist">
-        {playlist.map( item =>
-            <div key={item.id}>{item.name}</div>
-        )}
+        <p>Playlist</p>
+        <div className="card-list">
+            {playlist.map( item =>
+                <CardComponent key={item.id} {...item} />
+            )}
+        </div>
     </div>
 }

@@ -10,14 +10,20 @@ const IndexPage = () => {
   const [ artists, setArtists ] = useState([]);
 
   return (
-    <div>
-      <PlaylistContext.Provider value={[ playlist, setPlaylist ]}>
-        <PlaylistComponent />
-      </PlaylistContext.Provider>
-
-      <ArtistContext.Provider value={[ artists, setArtists ]}>
-        <ArtistComponent />
-      </ArtistContext.Provider>
+    <div className="container">
+      <div className="block sidebar">
+     
+      </div>
+      <div className="block main">
+        <PlaylistContext.Provider value={[ playlist, setPlaylist ]}>
+          <PlaylistComponent />
+        </PlaylistContext.Provider>
+      </div>
+      <div className="block footer">
+        <ArtistContext.Provider value={[ artists, setArtists ]}>
+          <ArtistComponent />
+        </ArtistContext.Provider>
+      </div>
     </div>
     
   )
