@@ -3,10 +3,11 @@ import SongsContext from '../providers/songsContext';
 
 export const PlayerComponent = ()=> {
     const [ time, setTime ] = useState(0);
-    const [ song, setSong ] = useContext(SongsContext);
-    const { length = 0 } = song?.currentSong;
-
+    const {currentSong} = useContext(SongsContext);
+    const { length = 0 } = currentSong;
+    console.log(currentSong)
     useEffect(()=>{
+        console.log(currentSong)
         const interval = setInterval(() => {
             setTime((time) => {
                 if(time == length) {
@@ -17,9 +18,9 @@ export const PlayerComponent = ()=> {
                 return time + 100
             }) 
         }, 1000);
-    }, []); 
+    }, [currentSong]); 
 
-    console.log(time, length)
+    console.log(time)
 
     return <div className="player">
         <input

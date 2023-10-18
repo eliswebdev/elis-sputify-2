@@ -4,8 +4,9 @@ import { Link } from "gatsby"
 
 
 export const CardComponent = ({id, name, description, img})=> {
-    return <div className="card">
+    return <Link to={`/playlist-${id}`}>
+        <div className="card">
         {name}
-        <Link to={`/playlist-${id}`}>{name}</Link>
     </div>
+    </Link>
 }

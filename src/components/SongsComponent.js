@@ -1,27 +1,28 @@
 import React, { useContext, useEffect } from "react";
 import axios from 'axios'
 import SongsContext from '../providers/songsContext';
-
+import { CardComponent } from "./CardComponent";
 
 export const SongsComponent = ()=> {
-    const [ song, setSong ] = useContext(SongsContext);
+    const {songs, setSongs, setCurrentSong} = useContext(SongsContext);
 
     useEffect(()=>{
         
         const fetchData = async () => {
-            const {data} = await axios.get('http://localhost:3000/songs')
-            setSong((song)=> {return{songs: data, ...song}})
+            const {data} = await axios.get('http://localhost:3000/songs');
+            setSongs(data)
         };
       
         fetchData();
 
     }, []); 
 
-    console.log(song);
-
     return <div className="songs">
-        {song.songs.map( item =>
-            <div key={item.id} onClick={()=>setSong({currentSong: item, ...song})}>{item.title}</div>
-        )}
+        SONG
+        <div className="card-list">
+            {songs.map( item =>
+            <div className="card" onClick={()=>setCurrentSong(item)} key={item.id}>{item.title}</div>
+            )}
+        </div>
     </div>
 }

@@ -4,20 +4,28 @@ import SongsContext from "../../providers/songsContext";
 import { SongsComponent } from "../../components/SongsComponent";
 import { PlayerComponent } from "../../components/PlayerComponent";
 
-const SongsPage = () => {
-  const [ song, setSong ] = useState({songs: [], currentSong: {}});
+const IndexPage = () => {
+  const [ songs, setSongs ] = useState([]);
+  const [ currentSong, setCurrentSong ] = useState({});
+
 
   return (
-    <div>
-      <SongsContext.Provider value={[ song, setSong ]}>
-        <SongsComponent />
-        <PlayerComponent />
-      </SongsContext.Provider>
-    </div>
-    
+    <SongsContext.Provider value={{songs, setSongs, currentSong, setCurrentSong }}>
+      <div className="container">
+        <div className="block sidebar">
+      
+        </div>
+        <div className="block main">
+            <SongsComponent />
+        </div>
+        <div className="block footer"> 
+            <PlayerComponent />
+        </div>
+      </div>
+    </SongsContext.Provider>
   )
 }
 
-export default SongsPage
+export default IndexPage
 
 export const Head = () => <title>Songs Page</title>
